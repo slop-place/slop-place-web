@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>slop.place — software written by machines, served with a label</title>
-<meta name="description" content="Open-source software written end to end by AI, published with the numbers to check it by. No human has read it line by line.">
+<meta name="description" content="Open-source software written end to end by AI, published with the numbers to check it by. Ephemeral CI runners and a Terraform provider. No human has read it line by line.">
 
 <link rel="icon" href="/assets/favicon.png" type="image/png">
 <meta property="og:title" content="slop.place">
@@ -54,8 +54,115 @@
     </div>
   </section>
 
-  <section class="serving" aria-labelledby="serving-heading">
+  <section class="serving" aria-labelledby="rf-heading">
     <p class="eyebrow">On the counter</p>
+    <h2 id="rf-heading" class="serving-title">runnerforge</h2>
+
+    <div class="serving-grid">
+
+      <article class="label" aria-labelledby="rf-facts-heading">
+        <h3 id="rf-facts-heading" class="label-title">Slop Facts</h3>
+
+        <div class="rule rule--hair"></div>
+        <p class="label-serving">1 throwaway machine per CI job</p>
+        <p class="label-serving-size">
+          <span>Serving size</span><strong>3 forges</strong>
+        </p>
+
+        <div class="rule rule--thick"></div>
+        <p class="label-amount">Amount per release</p>
+        <p class="label-headline">
+          <span>Written by machines</span><strong>100%</strong>
+        </p>
+
+        <div class="rule rule--medium"></div>
+        <p class="label-col">% verified</p>
+
+        <dl class="label-rows">
+          <div class="row row--emph">
+            <dt>Read by humans</dt><dd class="v">0</dd><dd class="p">0%</dd>
+          </div>
+          <div class="row">
+            <dt>Forges driven end to end <em>against a live instance</em></dt>
+            <dd class="v">3</dd><dd class="p">100%</dd>
+          </div>
+          <div class="row">
+            <dt>Unit and integration tests</dt><dd class="v">135</dd><dd class="p">100%</dd>
+          </div>
+          <div class="row">
+            <dt>Cloud VMs booted and destroyed <em>on a real account</em></dt>
+            <dd class="v">1</dd><dd class="p">100%</dd>
+          </div>
+          <div class="row">
+            <dt>Lint findings <em>115 linters, 18 refused with reasons</em></dt>
+            <dd class="v">0</dd><dd class="p">0%</dd>
+          </div>
+        </dl>
+
+        <div class="rule rule--thick"></div>
+
+        <dl class="label-minor">
+          <div class="row"><dt>Statement coverage</dt><dd class="v">74%</dd></div>
+          <div class="row"><dt>Cloud drivers</dt><dd class="v">2</dd></div>
+          <div class="row"><dt>Container image</dt><dd class="v">19 MB</dd></div>
+          <div class="row"><dt>Go, hand-written</dt><dd class="v">0 lines</dd></div>
+        </dl>
+
+        <div class="rule rule--hair"></div>
+        <p class="label-foot">
+          The end-to-end tests drive a real Forgejo, a real GitLab and a real GitHub
+          repository, and fail if a single machine or runner registration survives
+          the run. Every linter golangci-lint ships is enabled; the eighteen turned
+          off contradict each other or this design, and each says why in the config.
+        </p>
+      </article>
+
+      <div class="serving-copy">
+        <p class="lede">
+          A CI job is queued. runnerforge notices, asks the forge for a credential
+          good for exactly one job, boots a machine carrying it, and destroys the
+          machine when the job ends. GitHub Actions, GitLab CI and Forgejo Actions,
+          on any cloud.
+        </p>
+
+        <p>
+          All three forges converged on the same primitive, which is what lets one
+          controller serve them: GitHub mints a just-in-time config, Forgejo an
+          ephemeral runner, GitLab nothing at all — so for GitLab the single use is
+          enforced on our side and the registration is deleted by the reaper, since
+          a registration left behind is a token that outlives its machine.
+        </p>
+
+        <p>
+          The reaper is the point. The failure mode of a runner controller is
+          leaking machines and billing you for them, so it asks each cloud what it
+          is <em>actually</em> running rather than trusting its own database — and
+          can lose that database entirely without leaking. Pointing it at a real
+          OVHcloud account found the bug that proves why: Nova's create response
+          carries no timestamp, the reaper ages machines off by that field, and a
+          zero timestamp reads as infinitely old. It would have destroyed the whole
+          fleet mid-job on its first pass. That one, a database default that
+          silently re-enabled a connection an operator had switched off, and a data
+          race in the driver registry all ship with the regression test that fails
+          without the fix.
+        </p>
+
+        <div class="install">
+          <p class="install-label">Run it</p>
+<pre><code>docker run -v ./data:/data -p 8080:8080 \
+  ghcr.io/slop-place/runnerforge</code></pre>
+        </div>
+
+        <p class="links">
+          <a class="cta" href="https://github.com/slop-place/runnerforge">Read the source</a>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="serving serving--alt" aria-labelledby="serving-heading">
+    <p class="eyebrow">Also serving</p>
     <h2 id="serving-heading" class="serving-title">terraform-provider-freshdesk</h2>
 
     <div class="serving-grid">

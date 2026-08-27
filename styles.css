@@ -155,6 +155,9 @@ a { color: inherit; }
   background: var(--tray-deep);
 }
 
+/* Servings alternate tone so a stack of them reads as separate dishes. */
+.serving--alt { background: var(--tray); }
+
 .eyebrow {
   font-family: var(--mono);
   font-size: 0.78rem;

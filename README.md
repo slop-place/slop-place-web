@@ -5,6 +5,19 @@ publishes software written end to end by AI, with the numbers to check it by.
 
 Static: one HTML file, one stylesheet, no build step, no JavaScript.
 
+## What is on the counter
+
+Servings are newest first, each with its own Slop Facts panel.
+
+| Project | What it is |
+|---|---|
+| [runnerforge](https://github.com/slop-place/runnerforge) | Ephemeral CI runners: one throwaway machine per job, for GitHub Actions, GitLab CI and Forgejo, on any cloud |
+| [terraform-provider-freshdesk](https://github.com/slop-place/terraform-provider-freshdesk) | A Terraform provider covering the whole of the Freshdesk API v2 |
+
+Adding one means a new `<section class="serving">` in `index.html`. Alternate
+`serving--alt` on every other section so a stack of them reads as separate
+dishes rather than one long panel.
+
 ## Design
 
 The ground is institutional canteen green, because "slop" is the brief and a
