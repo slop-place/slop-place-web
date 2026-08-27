@@ -87,7 +87,7 @@
             <dd class="v">3</dd><dd class="p">100%</dd>
           </div>
           <div class="row">
-            <dt>Unit and integration tests</dt><dd class="v">135</dd><dd class="p">100%</dd>
+            <dt>Unit and integration tests</dt><dd class="v">180</dd><dd class="p">100%</dd>
           </div>
           <div class="row">
             <dt>Cloud VMs booted and destroyed <em>on a real account</em></dt>
@@ -102,7 +102,7 @@
         <div class="rule rule--thick"></div>
 
         <dl class="label-minor">
-          <div class="row"><dt>Statement coverage</dt><dd class="v">74%</dd></div>
+          <div class="row"><dt>Statement coverage</dt><dd class="v">86%</dd></div>
           <div class="row"><dt>Cloud drivers</dt><dd class="v">2</dd></div>
           <div class="row"><dt>Container image</dt><dd class="v">19 MB</dd></div>
           <div class="row"><dt>Go, hand-written</dt><dd class="v">0 lines</dd></div>
@@ -112,8 +112,10 @@
         <p class="label-foot">
           The end-to-end tests drive a real Forgejo, a real GitLab and a real GitHub
           repository, and fail if a single machine or runner registration survives
-          the run. Every linter golangci-lint ships is enabled; the eighteen turned
-          off contradict each other or this design, and each says why in the config.
+          the run. Exactly one function is uncovered: <code>main</code>, which calls
+          <code>os.Exit</code>. Every linter golangci-lint ships is enabled; the
+          eighteen turned off contradict each other or this design, and each says
+          why in the config.
         </p>
       </article>
 
