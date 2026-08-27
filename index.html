@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>slop.place — software written by machines, served with a label</title>
+<meta name="description" content="Open-source software written end to end by AI, published with the numbers to check it by. No human has read it line by line.">
+
+<link rel="icon" href="/assets/favicon.png" type="image/png">
+<meta property="og:title" content="slop.place">
+<meta property="og:description" content="Software written by machines. Served with a label.">
+<meta property="og:image" content="/assets/slop-place-512.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://slop.place">
+<meta name="twitter:card" content="summary">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="bar">
+  <a class="brand" href="/">
+    <img src="/assets/slop-place.svg" alt="" width="30" height="30">
+    <span>slop.place</span>
+  </a>
+  <a class="bar-link" href="https://github.com/slop-place">GitHub</a>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <h1 class="hero-title">
+      <span class="line">Software</span>
+      <span class="line">written by</span>
+      <span class="line">machines.</span>
+      <span class="line line--slop">Served with</span>
+      <span class="line line--slop">a label.</span>
+    </h1>
+
+    <div class="hero-note">
+      <p>
+        Everything published here was written end to end by an AI — the code, the
+        tests, the documentation, this sentence. No human has read it line by line.
+      </p>
+      <p>
+        That is not a disclaimer buried in a footer. It is the first thing on the
+        page, and every project ships with the numbers to check it by.
+      </p>
+    </div>
+  </section>
+
+  <section class="serving" aria-labelledby="serving-heading">
+    <p class="eyebrow">On the counter</p>
+    <h2 id="serving-heading" class="serving-title">terraform-provider-freshdesk</h2>
+
+    <div class="serving-grid">
+
+      <!-- The signature: a regulatory label for a software release. -->
+      <article class="label" aria-labelledby="facts-heading">
+        <h3 id="facts-heading" class="label-title">Slop Facts</h3>
+
+        <div class="rule rule--hair"></div>
+        <p class="label-serving">1 provider per helpdesk</p>
+        <p class="label-serving-size">
+          <span>Serving size</span><strong>28 resources</strong>
+        </p>
+
+        <div class="rule rule--thick"></div>
+        <p class="label-amount">Amount per release</p>
+        <p class="label-headline">
+          <span>Written by machines</span><strong>100%</strong>
+        </p>
+
+        <div class="rule rule--medium"></div>
+        <p class="label-col">% verified</p>
+
+        <dl class="label-rows">
+          <div class="row row--emph">
+            <dt>Read by humans</dt><dd class="v">0</dd><dd class="p">0%</dd>
+          </div>
+          <div class="row">
+            <dt>Acceptance tests <em>against a live helpdesk</em></dt>
+            <dd class="v">21</dd><dd class="p">100%</dd>
+          </div>
+          <div class="row">
+            <dt>Unit tests</dt><dd class="v">420</dd><dd class="p">100%</dd>
+          </div>
+          <div class="row">
+            <dt>API endpoints covered</dt><dd class="v">364</dd><dd class="p">100%</dd>
+          </div>
+          <div class="row">
+            <dt>Lint findings <em>every linter enabled</em></dt>
+            <dd class="v">0</dd><dd class="p">0%</dd>
+          </div>
+        </dl>
+
+        <div class="rule rule--thick"></div>
+
+        <dl class="label-minor">
+          <div class="row"><dt>Data sources</dt><dd class="v">45</dd></div>
+          <div class="row"><dt>Client methods</dt><dd class="v">246</dd></div>
+          <div class="row"><dt>Go, hand-written</dt><dd class="v">0 lines</dd></div>
+        </dl>
+
+        <div class="rule rule--hair"></div>
+        <p class="label-foot">
+          Percentages are of the shipped build. The acceptance suite creates and
+          destroys real records against a live Freshdesk account, not a mock.
+        </p>
+      </article>
+
+      <div class="serving-copy">
+        <p class="lede">
+          A Terraform provider covering the whole of the Freshdesk API v2 — agents,
+          groups, tickets, fields, SLA policies, automations, the knowledge base and
+          the forums.
+        </p>
+
+        <p>
+          Writing it turned up twelve places where Freshdesk's API disagrees with
+          Freshdesk's documentation: field writes that 404 on the documented path,
+          IDs that arrive quoted on some endpoints and bare on others, a
+          <code>choices</code> attribute with five different shapes, endpoints that
+          answer <code>405</code> to the delete their own docs describe. Each one is
+          handled, and named in the README.
+        </p>
+
+        <div class="install">
+          <p class="install-label">Install</p>
+<pre><code>terraform {
+  required_providers {
+    freshdesk = {
+      source  = "slop-place/freshdesk"
+      version = "~&gt; 0.1"
+    }
+  }
+}</code></pre>
+        </div>
+
+        <p class="links">
+          <a class="cta" href="https://github.com/slop-place/terraform-provider-freshdesk">Read the source</a>
+          <a class="cta cta--ghost" href="https://registry.terraform.io/providers/slop-place/freshdesk/latest">Registry</a>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="kitchen" aria-labelledby="kitchen-heading">
+    <h2 id="kitchen-heading" class="kitchen-title">How it gets made</h2>
+    <div class="kitchen-grid">
+      <div class="dish">
+        <h3>The spec is read, not recalled</h3>
+        <p>
+          The API reference is scraped and parsed before a line is written, and a
+          coverage script checks the client against that inventory on every build.
+          A missing endpoint fails CI.
+        </p>
+      </div>
+      <div class="dish">
+        <h3>It runs against the real thing</h3>
+        <p>
+          Every resource is exercised through create, refresh, update, import and
+          destroy on a live account. That is how the twelve documentation bugs were
+          found; a mock would have agreed with the docs.
+        </p>
+      </div>
+      <div class="dish">
+        <h3>Nothing is hidden</h3>
+        <p>
+          Where the API cannot do something — no delete on an SLA policy, a body the
+          server rewrites — the provider says so in its own docs and warns at plan
+          time rather than pretending.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="caveat">
+    <p>
+      <strong>Read it before you run it.</strong> Thorough testing is not the same
+      as review, and a machine can be confidently wrong in ways a test suite agrees
+      with. Everything here is MPL-2.0 and the diff is right there.
+    </p>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <p><a href="https://github.com/slop-place">github.com/slop-place</a></p>
+  <p class="foot-quiet">Served since 2026. Portions written by a machine: all of them.</p>
+</footer>
+
+</body>
+</html>

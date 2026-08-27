@@ -1,0 +1,5 @@
+# Cloudflare Pages. The site is static, so there is no build step: the
+# repository root is what gets served.
+name = "slop-place"
+compatibility_date = "2026-08-27"
+pages_build_output_dir = "."
