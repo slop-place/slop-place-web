@@ -121,32 +121,18 @@
 
       <div class="serving-copy">
         <p class="lede">
-          A CI job is queued. runnerforge notices, asks the forge for a credential
-          good for exactly one job, boots a machine carrying it, and destroys the
-          machine when the job ends. GitHub Actions, GitLab CI and Forgejo Actions,
-          on any cloud.
+          Ephemeral CI runners: one throwaway machine per job, for GitHub Actions,
+          GitLab CI and Forgejo Actions, on any cloud.
         </p>
 
         <p>
-          All three forges converged on the same primitive, which is what lets one
-          controller serve them: GitHub mints a just-in-time config, Forgejo an
-          ephemeral runner, GitLab nothing at all — so for GitLab the single use is
-          enforced on our side and the registration is deleted by the reaper, since
-          a registration left behind is a token that outlives its machine.
-        </p>
-
-        <p>
-          The reaper is the point. The failure mode of a runner controller is
-          leaking machines and billing you for them, so it asks each cloud what it
-          is <em>actually</em> running rather than trusting its own database — and
-          can lose that database entirely without leaking. Pointing it at a real
-          OVHcloud account found the bug that proves why: Nova's create response
-          carries no timestamp, the reaper ages machines off by that field, and a
-          zero timestamp reads as infinitely old. It would have destroyed the whole
-          fleet mid-job on its first pass. That one, a database default that
-          silently re-enabled a connection an operator had switched off, and a data
-          race in the driver registry all ship with the regression test that fails
-          without the fix.
+          All three forges solved the same problem and none of them the same way.
+          GitHub hands out a config good for exactly one job. Forgejo hands out a
+          runner that deletes itself. GitLab hands out a token that does neither
+          and a registration it will never clean up. The fourth surprise came from
+          OVHcloud: a create response with no creation time, which the reaper reads
+          as a machine born in 1970 and long overdue for deletion. It would have
+          emptied the account on its first pass.
         </p>
 
         <div class="install">
