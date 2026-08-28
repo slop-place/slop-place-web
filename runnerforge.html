@@ -131,46 +131,108 @@
     <p class="eyebrow">What it looks like</p>
     <h2 id="shots-heading" class="serving-title">A console for a thing that spends money</h2>
 
-    <figure class="shot">
-      <img src="/assets/runnerforge/01-dashboard.png" alt="The runnerforge dashboard: counts of pools and running machines, a spend figure for the last 24 hours, a table of machines with their state and cost, and a log of recent activity." loading="lazy" width="1200">
-      <figcaption>
-        Every machine records what it cost, billed from when the provider
-        reported it running rather than from when the row was created — time
-        spent booting is not charged, and counting it would overstate every
-        figure here. Machines still running show a bill that is still growing.
-      </figcaption>
-    </figure>
+    <!-- A carousel with no JavaScript: the track is a scroll-snap container and
+         the numbers above are ordinary anchor links. It scrolls, swipes and
+         keyboards without a script, and degrades to a plain scrollable row if
+         scroll-snap is unsupported. -->
+    <div class="carousel">
+      <nav class="dots" aria-label="Screenshots">
+        <a href="#shot-cost"><span class="dot-n">01</span> Cost</a>
+        <a href="#shot-forms"><span class="dot-n">02</span> Forms</a>
+        <a href="#shot-hcl"><span class="dot-n">03</span> Terraform</a>
+        <a href="#shot-crd"><span class="dot-n">04</span> Kubernetes</a>
+      </nav>
+      <ol class="track">
 
-    <figure class="shot">
-      <img src="/assets/runnerforge/04-ovh-cloud.png" alt="The OVHcloud configuration page: labelled form fields for the Keystone endpoint, region and project, with stored credentials shown as set rather than as values, and a flavor picker listing real machine types from the account." loading="lazy" width="1200">
-      <figcaption>
-        Drivers declare their settings as typed fields, so the form has labels,
-        help text and validation instead of a JSON textarea. Providers that can
-        list what an account offers turn the flavor and image inputs into
-        pickers of real values — smallest first, because the cheapest thing that
-        works is usually the right choice. Secrets are never rendered back.
-      </figcaption>
-    </figure>
+        <li class="slide" id="shot-cost">
+          <figure>
+            <img src="/assets/runnerforge/01-dashboard.png" width="1200"
+                 alt="The runnerforge dashboard: counts of pools and running machines, a spend figure for the last 24 hours, a table of machines with their state and cost, and a log of recent activity.">
+          </figure>
+          <div class="slide-copy">
+            <p class="slide-n">01 / 04</p>
+            <h3>The bill is on the page</h3>
+            <p>
+              Every machine records what it cost, billed from when the provider
+              reported it running rather than from when the row was created.
+              Time spent booting is not charged, and counting it would overstate
+              every figure here.
+            </p>
+            <p>
+              Machines still running show a bill that is still growing, which is
+              the number worth watching. Sub-cent amounts are not rounded to
+              <code>$0.00</code>: a one-minute job genuinely costs less than a
+              cent, and hiding that defeats the point.
+            </p>
+          </div>
+        </li>
 
-    <figure class="shot">
-      <img src="/assets/runnerforge/02-export-hcl.png" alt="A pool rendered as Terraform HCL, with resource references to the forge, cloud, size and image rather than hard-coded ids." loading="lazy" width="1200">
-      <figcaption>
-        The UI is not a dead end. Anything configured by clicking renders itself
-        as Terraform, referencing the other resources properly rather than
-        hard-coding ids that mean nothing in another deployment.
-      </figcaption>
-    </figure>
+        <li class="slide" id="shot-forms">
+          <figure>
+            <img src="/assets/runnerforge/04-ovh-cloud.png" width="1200" loading="lazy"
+                 alt="The OVHcloud configuration page: labelled form fields for the Keystone endpoint, region and project, with stored credentials shown as set rather than as values, and a flavor picker listing real machine types from the account.">
+          </figure>
+          <div class="slide-copy">
+            <p class="slide-n">02 / 04</p>
+            <h3>Forms, not a JSON textarea</h3>
+            <p>
+              Drivers declare their settings as typed fields, so the form has
+              labels, help text and validation. Providers that can list what an
+              account offers turn the flavor and image inputs into pickers of
+              real values — smallest first, because the cheapest thing that
+              works is usually the right choice.
+            </p>
+            <p>
+              Secrets are never rendered back. The form says one is stored and
+              keeps it when you leave the field blank.
+            </p>
+          </div>
+        </li>
 
-    <figure class="shot">
-      <img src="/assets/runnerforge/03-export-crd.png" alt="The same cloud rendered as a Kubernetes custom resource, with its size and image catalogues nested under the spec." loading="lazy" width="1200">
-      <figcaption>
-        Or as a Kubernetes custom resource. Run with <code>-k8s</code> and the
-        cluster owns what it manages: objects are reconciled into the database,
-        their status reports back, and those records go read-only in the UI.
-        Secrets are a <code>secretRef</code> in both directions, so the output
-        is safe to commit.
-      </figcaption>
-    </figure>
+        <li class="slide" id="shot-hcl">
+          <figure>
+            <img src="/assets/runnerforge/02-export-hcl.png" width="1200" loading="lazy"
+                 alt="A pool rendered as Terraform HCL, with resource references to the forge, cloud, size and image rather than hard-coded ids.">
+          </figure>
+          <div class="slide-copy">
+            <p class="slide-n">03 / 04</p>
+            <h3>The UI is not a dead end</h3>
+            <p>
+              Anything configured by clicking renders itself as Terraform,
+              referencing the other resources properly rather than hard-coding
+              ids that mean nothing in another deployment.
+            </p>
+            <p>
+              Secrets become <code>var.</code> references, so what you paste
+              into a repository never carries a credential.
+            </p>
+          </div>
+        </li>
+
+        <li class="slide" id="shot-crd">
+          <figure>
+            <img src="/assets/runnerforge/03-export-crd.png" width="1200" loading="lazy"
+                 alt="The same cloud rendered as a Kubernetes custom resource, with its size and image catalogues nested under the spec.">
+          </figure>
+          <div class="slide-copy">
+            <p class="slide-n">04 / 04</p>
+            <h3>Or let the cluster own it</h3>
+            <p>
+              The same configuration renders as a Kubernetes custom resource.
+              Run with <code>-k8s</code> and objects are reconciled into the
+              database, their status reports back, and those records go
+              read-only in the UI.
+            </p>
+            <p>
+              Credentials come from a <code>secretRef</code> in both directions.
+              Anything made in the UI is left alone, so both ways of working
+              coexist in one deployment.
+            </p>
+          </div>
+        </li>
+
+      </ol>
+    </div>
   </section>
 
   <section class="kitchen" aria-labelledby="kitchen-heading">

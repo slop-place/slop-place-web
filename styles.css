@@ -188,19 +188,57 @@ a { color: inherit; }
   .serving-grid { grid-template-columns: 24rem minmax(0, 1fr); }
 }
 
-/* ── screenshots ─────────────────────────────────────────────────────── */
+/* ── the carousel ────────────────────────────────────────────────────────
+   No JavaScript: the track is a scroll-snap container and the numbers below
+   are ordinary anchor links. It scrolls, swipes and keyboards on its own, and
+   degrades to a plain scrollable row where scroll-snap is unsupported. */
 
 .shots { padding: clamp(3rem, 7vw, 5.5rem) var(--gutter); border-top: 2px solid var(--ink); }
 
-.shot {
-  margin: 0 0 clamp(2.5rem, 6vw, 4rem);
-  max-width: 68rem;
-}
-.shot:last-child { margin-bottom: 0; }
+.carousel { margin-top: clamp(1.5rem, 4vw, 2.5rem); }
 
-/* The border and hard shadow are the label's, so a screenshot reads as another
-   thing served on the same tray rather than a floating image. */
-.shot img {
+.track {
+  display: flex;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  margin: 0;
+  padding: 0 0 1rem;
+  list-style: none;
+
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 0;
+  /* The anchor links scroll rather than jump, and the sticky bar does not
+     land on top of the slide. */
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+
+  /* A thin rail rather than a platform scrollbar sitting over the tray. */
+  scrollbar-width: thin;
+  scrollbar-color: var(--tray-dark) transparent;
+}
+.track::-webkit-scrollbar { height: 6px; }
+.track::-webkit-scrollbar-thumb { background: var(--tray-dark); }
+.track::-webkit-scrollbar-track { background: transparent; }
+
+.slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  align-items: start;
+  min-width: 0;
+}
+
+@media (min-width: 62rem) {
+  /* Image left, description at the side. */
+  .slide { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); }
+}
+
+.slide figure { margin: 0; min-width: 0; }
+
+/* The screenshot wears the label's border and hard shadow, so it reads as
+   another thing served on the same tray rather than a floating image. */
+.slide img {
   display: block;
   width: 100%;
   height: auto;
@@ -209,12 +247,59 @@ a { color: inherit; }
   background: var(--paper);
 }
 
-.shot figcaption {
-  max-width: var(--measure);
-  margin-top: 1.25rem;
-  font-size: 0.95rem;
-  line-height: 1.5;
+.slide-copy { min-width: 0; max-width: 46ch; }
+
+.slide-n {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  color: var(--ink-soft);
+  margin: 0 0 0.35rem;
+}
+
+.slide-copy h3 {
+  font-family: var(--display);
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.75rem;
+}
+
+.slide-copy p { margin: 0 0 0.9rem; font-size: 0.95rem; line-height: 1.5; }
+.slide-copy p:last-child { margin-bottom: 0; }
+
+/* ── carousel navigation ─────────────────────────────────────────────── */
+
+.dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.dots a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  padding: 0.4rem 0.7rem;
+  border: 2px solid var(--ink);
+  background: var(--paper);
   color: var(--ink);
+  text-decoration: none;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  box-shadow: 3px 3px 0 var(--tray-dark);
+}
+.dots a:hover { transform: translate(1px, 1px); box-shadow: 2px 2px 0 var(--tray-dark); }
+.dots a:active { transform: translate(3px, 3px); box-shadow: none; }
+
+.dot-n { font-weight: 600; color: var(--ink-soft); }
+
+@media (prefers-reduced-motion: reduce) {
+  .track { scroll-behavior: auto; }
+  .dots a:hover, .dots a:active { transform: none; }
 }
 
 /* ── the label ───────────────────────────────────────────────────────── */
