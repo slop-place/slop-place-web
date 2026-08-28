@@ -188,6 +188,35 @@ a { color: inherit; }
   .serving-grid { grid-template-columns: 24rem minmax(0, 1fr); }
 }
 
+/* ── screenshots ─────────────────────────────────────────────────────── */
+
+.shots { padding: clamp(3rem, 7vw, 5.5rem) var(--gutter); border-top: 2px solid var(--ink); }
+
+.shot {
+  margin: 0 0 clamp(2.5rem, 6vw, 4rem);
+  max-width: 68rem;
+}
+.shot:last-child { margin-bottom: 0; }
+
+/* The border and hard shadow are the label's, so a screenshot reads as another
+   thing served on the same tray rather than a floating image. */
+.shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 2px solid var(--ink);
+  box-shadow: 8px 8px 0 var(--tray-dark);
+  background: var(--paper);
+}
+
+.shot figcaption {
+  max-width: var(--measure);
+  margin-top: 1.25rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
 /* ── the label ───────────────────────────────────────────────────────── */
 
 .label {

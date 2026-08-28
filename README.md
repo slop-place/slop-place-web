@@ -11,10 +11,15 @@ Servings are newest first, each with its own Slop Facts panel.
 
 | Project | What it is |
 |---|---|
-| [runnerforge](https://github.com/slop-place/runnerforge) | Ephemeral CI runners: one throwaway machine per job, for GitHub Actions, GitLab CI and Forgejo, on any cloud |
+| [runnerforge](https://github.com/slop-place/runnerforge) | Ephemeral CI runners: one throwaway machine per job, for GitHub Actions, GitLab CI and Forgejo, on any cloud — [detail page](/runnerforge) |
 | [terraform-provider-freshdesk](https://github.com/slop-place/terraform-provider-freshdesk) | A Terraform provider covering the whole of the Freshdesk API v2 |
 
-Adding one means a new `<section class="serving">` in `index.html`. Alternate
+A project with more to show gets its own page: a copy of the Slop Facts panel,
+then `<figure class="shot">` blocks pairing a screenshot with what it is
+demonstrating. Screenshots wear the label's own border and hard shadow, so they
+read as another thing served on the same tray rather than as floating images.
+
+Adding one to the index means a new `<section class="serving">` in `index.html`. Alternate
 `serving--alt` on every other section so a stack of them reads as separate
 dishes rather than one long panel.
 

@@ -4,4 +4,8 @@
     <loc>https://slop.place/</loc>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://slop.place/runnerforge</loc>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>

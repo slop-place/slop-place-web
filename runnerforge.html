@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>runnerforge — one throwaway machine per CI job</title>
+<meta name="description" content="Ephemeral CI runners for GitHub Actions, GitLab CI and Forgejo, on any cloud. One throwaway machine per job, destroyed when the job ends. Written end to end by an AI.">
+
+<link rel="icon" href="/assets/favicon.png" type="image/png">
+<meta property="og:title" content="runnerforge">
+<meta property="og:description" content="One throwaway machine per CI job. Three forges, any cloud.">
+<meta property="og:image" content="/assets/runnerforge/01-dashboard.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://slop.place/runnerforge">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="bar">
+  <a class="brand" href="/">
+    <img src="/assets/slop-place.svg" alt="" width="30" height="30">
+    <span>slop.place</span>
+  </a>
+  <a class="bar-link" href="https://github.com/slop-place/runnerforge">Source</a>
+</header>
+
+<main id="main">
+
+  <section class="serving">
+    <p class="eyebrow">On the counter</p>
+    <h2 class="serving-title">runnerforge</h2>
+
+    <div class="serving-grid">
+
+      <article class="label" aria-labelledby="facts-heading">
+        <h3 id="facts-heading" class="label-title">Slop Facts</h3>
+
+        <div class="rule rule--hair"></div>
+        <p class="label-serving">1 throwaway machine per CI job</p>
+        <p class="label-serving-size">
+          <span>Serving size</span><strong>3 forges</strong>
+        </p>
+
+        <div class="rule rule--thick"></div>
+        <p class="label-amount">Amount per release</p>
+        <p class="label-headline">
+          <span>Written by machines</span><strong>100%</strong>
+        </p>
+
+        <div class="rule rule--medium"></div>
+        <p class="label-col">% verified</p>
+
+        <dl class="label-rows">
+          <div class="row row--emph">
+            <dt>Read by humans</dt><dd class="v">0</dd><dd class="p">0%</dd>
+          </div>
+          <div class="row">
+            <dt>Forges driven end to end <em>against a live instance</em></dt>
+            <dd class="v">3</dd><dd class="p">100%</dd>
+          </div>
+          <div class="row">
+            <dt>Tests</dt><dd class="v">207</dd><dd class="p">100%</dd>
+          </div>
+          <div class="row">
+            <dt>Cloud VMs booted and destroyed <em>on a real account</em></dt>
+            <dd class="v">1</dd><dd class="p">100%</dd>
+          </div>
+          <div class="row">
+            <dt>Lint findings <em>115 linters, 18 refused with reasons</em></dt>
+            <dd class="v">0</dd><dd class="p">0%</dd>
+          </div>
+        </dl>
+
+        <div class="rule rule--thick"></div>
+
+        <dl class="label-minor">
+          <div class="row"><dt>Statement coverage</dt><dd class="v">86%</dd></div>
+          <div class="row"><dt>Uncovered functions</dt><dd class="v">1</dd></div>
+          <div class="row"><dt>Cloud drivers</dt><dd class="v">2</dd></div>
+          <div class="row"><dt>Container image</dt><dd class="v">19 MB</dd></div>
+          <div class="row"><dt>Go, hand-written</dt><dd class="v">0 lines</dd></div>
+        </dl>
+
+        <div class="rule rule--hair"></div>
+        <p class="label-foot">
+          The end-to-end tests drive a real Forgejo, a real GitLab and a real
+          GitHub repository, and fail if a single machine or runner registration
+          survives the run. The one uncovered function is <code>main</code>,
+          which calls <code>os.Exit</code>.
+        </p>
+      </article>
+
+      <div class="serving-copy">
+        <p class="lede">
+          Ephemeral CI runners: one throwaway machine per job, for GitHub
+          Actions, GitLab CI and Forgejo Actions, on any cloud.
+        </p>
+
+        <p>
+          All three forges solved the same problem and none of them the same way.
+          GitHub hands out a config good for exactly one job. Forgejo hands out a
+          runner that deletes itself. GitLab hands out a token that does neither
+          and a registration it will never clean up. The fourth surprise came
+          from OVHcloud: a create response with no creation time, which the
+          reaper reads as a machine born in 1970 and long overdue for deletion.
+          It would have emptied the account on its first pass.
+        </p>
+
+        <div class="install">
+          <p class="install-label">Run it</p>
+<pre><code>docker run -v ./data:/data -p 8080:8080 \
+  ghcr.io/slop-place/runnerforge</code></pre>
+        </div>
+
+        <p class="links">
+          <a class="cta" href="https://github.com/slop-place/runnerforge">Read the source</a>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="shots serving--alt" aria-labelledby="shots-heading">
+    <p class="eyebrow">What it looks like</p>
+    <h2 id="shots-heading" class="serving-title">A console for a thing that spends money</h2>
+
+    <figure class="shot">
+      <img src="/assets/runnerforge/01-dashboard.png" alt="The runnerforge dashboard: counts of pools and running machines, a spend figure for the last 24 hours, a table of machines with their state and cost, and a log of recent activity." loading="lazy" width="1200">
+      <figcaption>
+        Every machine records what it cost, billed from when the provider
+        reported it running rather than from when the row was created — time
+        spent booting is not charged, and counting it would overstate every
+        figure here. Machines still running show a bill that is still growing.
+      </figcaption>
+    </figure>
+
+    <figure class="shot">
+      <img src="/assets/runnerforge/04-ovh-cloud.png" alt="The OVHcloud configuration page: labelled form fields for the Keystone endpoint, region and project, with stored credentials shown as set rather than as values, and a flavor picker listing real machine types from the account." loading="lazy" width="1200">
+      <figcaption>
+        Drivers declare their settings as typed fields, so the form has labels,
+        help text and validation instead of a JSON textarea. Providers that can
+        list what an account offers turn the flavor and image inputs into
+        pickers of real values — smallest first, because the cheapest thing that
+        works is usually the right choice. Secrets are never rendered back.
+      </figcaption>
+    </figure>
+
+    <figure class="shot">
+      <img src="/assets/runnerforge/02-export-hcl.png" alt="A pool rendered as Terraform HCL, with resource references to the forge, cloud, size and image rather than hard-coded ids." loading="lazy" width="1200">
+      <figcaption>
+        The UI is not a dead end. Anything configured by clicking renders itself
+        as Terraform, referencing the other resources properly rather than
+        hard-coding ids that mean nothing in another deployment.
+      </figcaption>
+    </figure>
+
+    <figure class="shot">
+      <img src="/assets/runnerforge/03-export-crd.png" alt="The same cloud rendered as a Kubernetes custom resource, with its size and image catalogues nested under the spec." loading="lazy" width="1200">
+      <figcaption>
+        Or as a Kubernetes custom resource. Run with <code>-k8s</code> and the
+        cluster owns what it manages: objects are reconciled into the database,
+        their status reports back, and those records go read-only in the UI.
+        Secrets are a <code>secretRef</code> in both directions, so the output
+        is safe to commit.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="kitchen" aria-labelledby="kitchen-heading">
+    <h2 id="kitchen-heading" class="kitchen-title">How it stays honest</h2>
+    <div class="kitchen-grid">
+      <div class="dish">
+        <h3>The reaper does not trust the database</h3>
+        <p>
+          The failure mode of a runner controller is leaking machines and
+          billing you. So it asks each cloud what it is <em>actually</em>
+          running, rather than what it believes — and can lose its database
+          entirely without leaking.
+        </p>
+      </div>
+      <div class="dish">
+        <h3>Nothing important is mocked</h3>
+        <p>
+          The tests drive a real Forgejo, a real GitLab and a real GitHub
+          repository. Runners are containers rather than cloud VMs, which is the
+          only substitution; every run asserts that nothing survived it.
+        </p>
+      </div>
+      <div class="dish">
+        <h3>It says when it is not safe</h3>
+        <p>
+          The console holds cloud credentials. Configure an OIDC issuer and it is
+          gated; leave it unset and it says so at startup and on every page,
+          rather than looking secure when it is not.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="caveat">
+    <p>
+      <strong>Read it before you run it.</strong> Thorough testing is not the same
+      as review, and a machine can be confidently wrong in ways a test suite agrees
+      with. This one provisions cloud machines that cost money. Point it at a
+      disposable project first.
+    </p>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <p><a href="https://github.com/slop-place">github.com/slop-place</a></p>
+  <p class="foot-quiet">Served since 2026. Portions written by a machine: all of them.</p>
+</footer>
+
+</body>
+</html>
