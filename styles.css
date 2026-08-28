@@ -223,6 +223,11 @@ a { color: inherit; }
 .slide {
   flex: 0 0 100%;
   scroll-snap-align: start;
+  /* Enough room above that the numbers stay on screen when one of them
+     scrolls a slide into view; you can reach the next slide without
+     scrolling back up to find the buttons. */
+  scroll-margin-block-start: 5rem;
+  scroll-margin-block-end: 1rem;
   display: grid;
   gap: clamp(1.25rem, 3vw, 2.5rem);
   align-items: start;
@@ -234,14 +239,19 @@ a { color: inherit; }
   .slide { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); }
 }
 
-.slide figure { margin: 0; min-width: 0; }
+/* Every slide reserves the same height whatever the screenshot's shape, so
+   moving between them never resizes the carousel, and a whole slide fits on
+   screen so the dots above do not have to scroll the page to reach one. */
+.slide figure { margin: 0; min-width: 0; display: flex; justify-content: center; }
 
 /* The screenshot wears the label's border and hard shadow, so it reads as
    another thing served on the same tray rather than a floating image. */
 .slide img {
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   height: auto;
+  max-height: min(62vh, 34rem);
   border: 2px solid var(--ink);
   box-shadow: 8px 8px 0 var(--tray-dark);
   background: var(--paper);
@@ -293,6 +303,20 @@ a { color: inherit; }
   box-shadow: 3px 3px 0 var(--tray-dark);
 }
 .dots a:hover { transform: translate(1px, 1px); box-shadow: 2px 2px 0 var(--tray-dark); }
+
+/* The button for the slide you are on reads as pressed, so the numbers say
+   where you are as well as where you can go. Before anything is clicked that
+   is the first one. */
+.carousel:not(:has(.slide:target)) .dots a:first-child,
+.carousel:has(#shot-cost:target) .dots a[href="#shot-cost"],
+.carousel:has(#shot-forms:target) .dots a[href="#shot-forms"],
+.carousel:has(#shot-hcl:target) .dots a[href="#shot-hcl"],
+.carousel:has(#shot-crd:target) .dots a[href="#shot-crd"] {
+  background: var(--ink);
+  color: var(--paper);
+  transform: translate(3px, 3px);
+  box-shadow: none;
+}
 .dots a:active { transform: translate(3px, 3px); box-shadow: none; }
 
 .dot-n { font-weight: 600; color: var(--ink-soft); }
