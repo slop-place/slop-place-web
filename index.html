@@ -258,6 +258,108 @@ swift test</code></pre>
     </div>
   </section>
 
+  <section class="serving" aria-labelledby="mm-heading">
+    <p class="eyebrow">Also serving</p>
+    <h2 id="mm-heading" class="serving-title">terraform-provider-mattermost</h2>
+
+    <div class="serving-grid">
+
+      <article class="label" aria-labelledby="mm-facts-heading">
+        <h3 id="mm-facts-heading" class="label-title">Slop Facts</h3>
+
+        <div class="rule rule--hair"></div>
+        <p class="label-serving">1 provider per chat server</p>
+        <p class="label-serving-size">
+          <span>Serving size</span><strong>39 resources</strong>
+        </p>
+
+        <div class="rule rule--thick"></div>
+        <p class="label-amount">Amount per release</p>
+        <p class="label-headline">
+          <span>Written by machines</span><strong>100%</strong>
+        </p>
+
+        <div class="rule rule--medium"></div>
+        <p class="label-col">% verified</p>
+
+        <dl class="label-rows">
+          <div class="row row--emph">
+            <dt>Read by humans</dt><dd class="v">0</dd><dd class="p">0%</dd>
+          </div>
+          <div class="row">
+            <dt>Acceptance tests <em>against a live server</em></dt>
+            <dd class="v">41</dd><dd class="p">100%</dd>
+          </div>
+          <div class="row">
+            <dt>Test functions</dt><dd class="v">237</dd><dd class="p">100%</dd>
+          </div>
+          <div class="row">
+            <dt>API operations classified <em>600 documented, none unaccounted for</em></dt>
+            <dd class="v">600</dd><dd class="p">100%</dd>
+          </div>
+          <div class="row">
+            <dt>Lint findings <em>every linter enabled</em></dt>
+            <dd class="v">0</dd><dd class="p">0%</dd>
+          </div>
+        </dl>
+
+        <div class="rule rule--thick"></div>
+
+        <dl class="label-minor">
+          <div class="row"><dt>Data sources</dt><dd class="v">32</dd></div>
+          <div class="row"><dt>Statement coverage</dt><dd class="v">91%</dd></div>
+          <div class="row"><dt>API quirks documented</dt><dd class="v">17</dd></div>
+          <div class="row"><dt>Go, hand-written</dt><dd class="v">0 lines</dd></div>
+        </dl>
+
+        <div class="rule rule--hair"></div>
+        <p class="label-foot">
+          Coverage is 88% with no server at all and 91% against a live one. Two
+          gates keep the suite honest: one fails if any attribute is never
+          written, the other if any registered configuration is never applied.
+          Every run sweeps the server clean afterwards, whether it passed or not.
+        </p>
+      </article>
+
+      <div class="serving-copy">
+        <p class="lede">
+          A Terraform provider for Mattermost — teams and channels, users, bots and
+          their tokens, webhooks and slash commands, permission schemes, groups,
+          and the system configuration.
+        </p>
+
+        <p>
+          The configuration has several hundred settings across four dozen
+          sections, so the resource takes the ones you want as a JSON document and
+          manages exactly those, restoring what it found on destroy. Writing it
+          turned up seventeen places where Mattermost accepts something and quietly
+          does nothing with it: a team's contact address, a user's verified flag,
+          a token's expiry. The last one matters — asking for a token that expires
+          and getting a permanent one is not a difference to discover later — so
+          the provider checks what came back and fails.
+        </p>
+
+        <div class="install">
+          <p class="install-label">Install</p>
+<pre><code>terraform {
+  required_providers {
+    mattermost = {
+      source  = "slop-place/mattermost"
+      version = "~&gt; 0.1"
+    }
+  }
+}</code></pre>
+        </div>
+
+        <p class="links">
+          <a class="cta" href="https://github.com/slop-place/terraform-provider-mattermost">Read the source</a>
+          <a class="cta cta--ghost" href="https://github.com/slop-place/terraform-provider-mattermost/blob/main/internal/apispec/FINDINGS.md">Where the API disagrees with its docs</a>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
   <section class="serving serving--alt" aria-labelledby="serving-heading">
     <p class="eyebrow">Also serving</p>
     <h2 id="serving-heading" class="serving-title">terraform-provider-freshdesk</h2>

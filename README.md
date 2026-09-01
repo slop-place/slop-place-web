@@ -12,6 +12,7 @@ Servings are newest first, each with its own Slop Facts panel.
 | Project | What it is |
 |---|---|
 | [runnerforge](https://github.com/slop-place/runnerforge) | Ephemeral CI runners: one throwaway machine per job, for GitHub Actions, GitLab CI and Forgejo, on any cloud — [detail page](/runnerforge) |
+| [terraform-provider-mattermost](https://github.com/slop-place/terraform-provider-mattermost) | A Terraform provider for Mattermost: teams, channels, users, bots, integrations and the system configuration |
 | [terraform-provider-freshdesk](https://github.com/slop-place/terraform-provider-freshdesk) | A Terraform provider covering the whole of the Freshdesk API v2 |
 
 A project with more to show gets its own page: a copy of the Slop Facts panel,
