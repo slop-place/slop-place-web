@@ -287,7 +287,7 @@ swift test</code></pre>
             <dt>Read by humans</dt><dd class="v">0</dd><dd class="p">0%</dd>
           </div>
           <div class="row">
-            <dt>Acceptance tests <em>against a live server</em></dt>
+            <dt>Acceptance tests <em>against a real server in Docker</em></dt>
             <dd class="v">41</dd><dd class="p">100%</dd>
           </div>
           <div class="row">
@@ -308,7 +308,7 @@ swift test</code></pre>
         <dl class="label-minor">
           <div class="row"><dt>Data sources</dt><dd class="v">32</dd></div>
           <div class="row"><dt>Statement coverage</dt><dd class="v">91%</dd></div>
-          <div class="row"><dt>API quirks documented</dt><dd class="v">17</dd></div>
+          <div class="row"><dt>API quirks documented</dt><dd class="v">22</dd></div>
           <div class="row"><dt>Go, hand-written</dt><dd class="v">0 lines</dd></div>
         </dl>
 
@@ -332,7 +332,7 @@ swift test</code></pre>
           The configuration has several hundred settings across four dozen
           sections, so the resource takes the ones you want as a JSON document and
           manages exactly those, restoring what it found on destroy. Writing it
-          turned up seventeen places where Mattermost accepts something and quietly
+          turned up twenty-two places where Mattermost accepts something and quietly
           does nothing with it: a team's contact address, a user's verified flag,
           a token's expiry. The last one matters — asking for a token that expires
           and getting a permanent one is not a difference to discover later — so
